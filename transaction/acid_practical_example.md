@@ -84,21 +84,12 @@ exit;
 It we try to check the products table once database gets restored.
 
 ```
-postgres=# begin transaction
-;
-BEGIN
 postgres=*# select * from products;
  pid | name  | price  | inventory 
 -----+-------+--------+-----------
    1 | phone | 999.99 |       100
 (1 row)
 
-postgres=*# update products set inventory = inventory - 10;
-UPDATE 1
-postgres=*# select * from products;
- pid | name  | price  | inventory 
------+-------+--------+-----------
-   1 | phone | 999.99 |        90
-(1 row)
 ```
-The amount of inventory also gets restored.
+The amount of inventory also gets restored. we won't be getting inconsistant data.
+
